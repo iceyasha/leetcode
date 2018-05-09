@@ -1,8 +1,7 @@
 #+TITLE: LeetCode 题解
 
 
-1) 两数之和
-
+1. 两数之和
 #+BEGIN_EXAMPLE
 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
 
@@ -36,5 +35,49 @@ target = 9
 print twosum(nums, target)
 #+END_SRC
 
-#+RESULTS:
-: [0, 1]
+2. 两数相加[fn:1]
+#+BEGIN_EXAMPLE
+给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
+
+你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+
+示例：
+
+输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+输出：7 -> 0 -> 8
+原因：342 + 465 = 807
+#+END_EXAMPLE
+
+#+BEGIN_SRC python :results output
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+def addTwoNumbers(self, l1, l2):
+    """
+    :type l1: ListNode
+    :type l2: ListNode
+    :rtype: ListNode
+    """
+    head = ListNode(0)
+    current = head
+    sum_num = 0
+    while l1 or l2:
+        sum_num /= 10
+        if l1:
+            sum_num += l1.val
+            l1 = l1.next
+        if l2:
+            sum_num += l2.val
+            l2 = l2.next
+        current.next = ListNode(sum_num % 10)
+        current = current.next
+    if sum_num / 10 == 1:
+        current.next = ListNode(1)
+    return head.next
+#+END_SRC
+
+
+[fn:1] https://github.com/keon/algorithms/blob/master/linkedlist/add_two_numbers.py
