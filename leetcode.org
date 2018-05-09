@@ -1,7 +1,7 @@
 #+TITLE: LeetCode 题解
 
 
-1. 两数之和
+* 两数之和
 #+BEGIN_EXAMPLE
 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
 
@@ -35,7 +35,7 @@ target = 9
 print twosum(nums, target)
 #+END_SRC
 
-2. 两数相加[fn:1]
+* 两数相加[fn:1]
 #+BEGIN_EXAMPLE
 给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
 
