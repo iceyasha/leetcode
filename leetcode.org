@@ -139,7 +139,27 @@ print lengthOfLongestSubstring(a)
 假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0
 #+END_EXAMPLE
 
-
+#+BEGIN_EXAMPLE python
+class Solution(object):
+    def helper(self, x):
+        result = 0
+        while x != 0:
+            result = result * 10 + x % 10
+            x = x / 10
+        return result
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        result = self.helper(abs(x))
+        if x > 0 and result < 2 ** 31 - 1:
+            return result
+        elif x < 0 and -result > -2 ** 31:
+            return -result
+        else:
+            return 0
+#+END_EXAMPLE
 
 
 
